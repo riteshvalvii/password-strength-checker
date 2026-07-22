@@ -18,33 +18,25 @@ from database import create_database
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-
-# -----------------------------
-# SHOW / HIDE PASSWORD
-# -----------------------------
-
 def toggle_password():
 
     if password_entry.cget("show") == "*":
 
-        password_entry.configure(show="*")
-
-        show_button.configure(
-            text="Show"
-        )
-
-    else:
-
+        # Currently hidden → show password
         password_entry.configure(show="")
 
         show_button.configure(
             text="Hide"
         )
 
+    else:
 
-# -----------------------------
-# DISPLAY ANALYSIS
-# -----------------------------
+        # Currently visible → hide password
+        password_entry.configure(show="*")
+
+        show_button.configure(
+            text="Show"
+        )
 
 def display_analysis(password):
 
@@ -126,11 +118,6 @@ def display_analysis(password):
         text=output
     )
 
-
-# -----------------------------
-# ANALYZE BUTTON
-# -----------------------------
-
 def analyze_password_gui():
 
     password = password_entry.get()
@@ -147,11 +134,6 @@ def analyze_password_gui():
 
     display_analysis(password)
 
-
-# -----------------------------
-# GENERATE PASSWORD
-# -----------------------------
-
 def generate_password_gui():
 
     password = generate_password(16)
@@ -167,11 +149,6 @@ def generate_password_gui():
     )
 
     display_analysis(password)
-
-
-# -----------------------------
-# CHECK PASSWORD REUSE
-# -----------------------------
 
 def check_reuse_gui():
 
@@ -227,10 +204,6 @@ def check_reuse_gui():
         )
 
 
-# -----------------------------
-# APPLICATION
-# -----------------------------
-
 create_database()
 
 app = ctk.CTk()
@@ -242,11 +215,6 @@ app.title(
 app.geometry(
     "850x850"
 )
-
-
-# -----------------------------
-# TITLE
-# -----------------------------
 
 title_label = ctk.CTkLabel(
 
@@ -261,11 +229,6 @@ title_label = ctk.CTkLabel(
 title_label.pack(
     pady=20
 )
-
-
-# -----------------------------
-# USER ID
-# -----------------------------
 
 user_id_entry = ctk.CTkEntry(
 
@@ -282,11 +245,6 @@ user_id_entry = ctk.CTkEntry(
 user_id_entry.pack(
     pady=10
 )
-
-
-# -----------------------------
-# PASSWORD INPUT
-# -----------------------------
 
 input_frame = ctk.CTkFrame(
     app
@@ -344,11 +302,6 @@ show_button.grid(
 
 )
 
-
-# -----------------------------
-# BUTTONS
-# -----------------------------
-
 analyze_button = ctk.CTkButton(
 
     app,
@@ -405,11 +358,6 @@ reuse_button.pack(
     pady=10
 )
 
-
-# -----------------------------
-# PROGRESS BAR
-# -----------------------------
-
 strength_bar = ctk.CTkProgressBar(
 
     app,
@@ -426,11 +374,6 @@ strength_bar.pack(
 
 strength_bar.set(0)
 
-
-# -----------------------------
-# RESULTS
-# -----------------------------
-
 result_label = ctk.CTkLabel(
 
     app,
@@ -442,14 +385,8 @@ result_label = ctk.CTkLabel(
     justify="left"
 
 )
-
 result_label.pack(
     pady=20
 )
-
-
-# -----------------------------
-# RUN APPLICATION
-# -----------------------------
 
 app.mainloop()
