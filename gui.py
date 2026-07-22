@@ -10,11 +10,6 @@ from reuse_checker import (
 
 from database import create_database
 
-
-# -----------------------------
-# APPEARANCE
-# -----------------------------
-
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
@@ -22,7 +17,6 @@ def toggle_password():
 
     if password_entry.cget("show") == "*":
 
-        # Currently hidden → show password
         password_entry.configure(show="")
 
         show_button.configure(
@@ -31,7 +25,6 @@ def toggle_password():
 
     else:
 
-        # Currently visible → hide password
         password_entry.configure(show="*")
 
         show_button.configure(
