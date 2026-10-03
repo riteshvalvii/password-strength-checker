@@ -46,3 +46,6 @@ Password_Strength_Checker/
 ├── password_generator.py
 ├── reuse_checker.py
 └── security.py
+
+## Intern ID
+CITS9061
